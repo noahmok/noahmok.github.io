@@ -1,3 +1,7 @@
+/* =========================
+   Theme toggle
+   ========================= */
+
 (function () {
   var root = document.documentElement;
   var toggle = document.getElementById("theme-toggle");
@@ -6,41 +10,196 @@
 
   function applyTheme(theme) {
     var dark = theme === "dark";
+
     root.setAttribute("data-theme", theme);
-    toggle.setAttribute("aria-pressed", String(dark));
-    label.textContent = dark ? "Light mode" : "Dark mode";
+
+    toggle.setAttribute(
+      "aria-pressed",
+      String(dark)
+    );
+
+    label.textContent = dark
+      ? "Light mode"
+      : "Dark mode";
   }
 
-  applyTheme(root.getAttribute("data-theme") || "light");
+  applyTheme(
+    root.getAttribute("data-theme") || "light"
+  );
+
 
   toggle.addEventListener("click", function () {
-    var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    var next =
+      root.getAttribute("data-theme") === "dark"
+        ? "light"
+        : "dark";
+
     applyTheme(next);
-    try { localStorage.setItem("theme", next); } catch (e) {}
+
+    try {
+      localStorage.setItem("theme", next);
+    } catch (e) {}
   });
 
-  // Close the contents dropdown after choosing a link, clicking elsewhere, or pressing Escape
-  toc.addEventListener("click", function (e) { if (e.target.tagName === "A") toc.removeAttribute("open"); });
-  document.addEventListener("click", function (e) { if (!toc.contains(e.target)) toc.removeAttribute("open"); });
-  document.addEventListener("keydown", function (e) { if (e.key === "Escape") toc.removeAttribute("open"); });
+
+  /* =========================
+     Contents dropdown
+     ========================= */
+
+  // Close the contents dropdown after choosing a link.
+  toc.addEventListener("click", function (e) {
+    if (e.target.tagName === "A") {
+      toc.removeAttribute("open");
+    }
+  });
+
+
+  // Close when clicking outside.
+  document.addEventListener("click", function (e) {
+    if (!toc.contains(e.target)) {
+      toc.removeAttribute("open");
+    }
+  });
+
+
+  // Close with Escape.
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+      toc.removeAttribute("open");
+    }
+  });
+
 })();
 
 
-// Photo albums: native swipe/scroll-snap, plus buttons and arrow keys
+/* =========================
+   Photo albums
+   ========================= */
+
 (function () {
-  var calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  document.querySelectorAll("[data-album]").forEach(function (a) {
-    var t = a.querySelector(".album-track"), n = t.children.length;
-    var count = a.querySelector(".album-count"), cap = a.querySelector(".album-caption");
-    function idx() { return Math.round(t.scrollLeft / t.clientWidth); }
-    function show() { var i = idx(); count.textContent = (i + 1) + " / " + n; cap.textContent = t.children[i].dataset.cap; }
-    function go(i) { t.scrollTo({ left: Math.max(0, Math.min(n - 1, i)) * t.clientWidth, behavior: calm ? "auto" : "smooth" }); }
-    a.querySelector(".prev").addEventListener("click", function () { go(idx() - 1); });
-    a.querySelector(".next").addEventListener("click", function () { go(idx() + 1); });
-    t.addEventListener("scroll", show);
-    t.addEventListener("keydown", function (e) {
-      if (e.key === "ArrowLeft") { e.preventDefault(); go(idx() - 1); }
-      if (e.key === "ArrowRight") { e.preventDefault(); go(idx() + 1); }
-    });
+
+  var calm = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+
+  document.querySelectorAll("[data-album]").forEach(function (album) {
+
+    var track = album.querySelector(".album-track");
+
+    var numberOfSlides = track.children.length;
+
+    var count = album.querySelector(".album-count");
+
+    var caption = album.querySelector(".album-caption");
+
+
+    /* Determine the currently visible slide */
+
+    function currentIndex() {
+      return Math.round(
+        track.scrollLeft / track.clientWidth
+      );
+    }
+
+
+    /* Update caption and image count */
+
+    function updateDisplay() {
+
+      var index = currentIndex();
+
+      count.textContent =
+        (index + 1) +
+        " / " +
+        numberOfSlides;
+
+      caption.textContent =
+        track.children[index].dataset.cap;
+    }
+
+
+    /* Navigate to a particular slide */
+
+    function goTo(index) {
+
+      var target =
+        Math.max(
+          0,
+          Math.min(
+            numberOfSlides - 1,
+            index
+          )
+        );
+
+      track.scrollTo({
+        left: target * track.clientWidth,
+        behavior: calm ? "auto" : "smooth"
+      });
+    }
+
+
+    /* Previous button */
+
+    album
+      .querySelector(".prev")
+      .addEventListener("click", function () {
+
+        goTo(currentIndex() - 1);
+
+      });
+
+
+    /* Next button */
+
+    album
+      .querySelector(".next")
+      .addEventListener("click", function () {
+
+        goTo(currentIndex() + 1);
+
+      });
+
+
+    /* Update when manually swiping */
+
+    track.addEventListener(
+      "scroll",
+      updateDisplay
+    );
+
+
+    /* Keyboard navigation */
+
+    track.addEventListener(
+      "keydown",
+      function (e) {
+
+        if (e.key === "ArrowLeft") {
+
+          e.preventDefault();
+
+          goTo(currentIndex() - 1);
+
+        }
+
+
+        if (e.key === "ArrowRight") {
+
+          e.preventDefault();
+
+          goTo(currentIndex() + 1);
+
+        }
+
+      }
+    );
+
+
+    /* Set initial state */
+
+    updateDisplay();
+
   });
+
 })();
