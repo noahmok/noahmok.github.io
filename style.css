@@ -71,7 +71,7 @@ a { color: inherit; }
 .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
 
 /* Placeholder page content */
-main { max-width: 44rem; margin: 0 auto; padding: 3rem 1.5rem 6rem; }
+main { max-width: 64rem; margin: 0 auto; padding: 3rem 1.5rem 6rem; }
 main section { min-height: 60vh; }
 main h2 { font: 700 2rem/1.2 var(--font-display); }
 
@@ -85,3 +85,47 @@ main h2 { font: 700 2rem/1.2 var(--font-display); }
   .bar-nav { justify-content: flex-start; gap: 0.4rem 1rem; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* Projects */
+#projects { min-height: 0; }
+.project { --p-accent: #0B6E6E; position: relative; margin: 2.5rem 0 3.5rem; padding: 2rem;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--p-accent) 12%, var(--bg)), var(--bg) 70%); }
+.project-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 2rem; align-items: start; }
+.project h3 { margin: 0; font: 700 1.75rem/1.2 var(--font-display); }
+.project-meta { margin: 0.25rem 0 0.5rem; color: var(--muted); font-size: 0.9rem; }
+.project h4 { margin: 1.25rem 0 0.25rem; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--p-accent); }
+.project p { margin: 0.25rem 0; }
+.project ol, .project ul { margin: 0.25rem 0; padding-left: 1.25rem; }
+.dl { display: inline-block; margin-top: 1.25rem; padding: 0.6rem 1.1rem; border-radius: 999px; background: var(--p-accent); color: var(--bg); font-weight: 500; text-decoration: none; }
+.dl:hover { filter: brightness(1.1); }
+.dl-note { color: var(--muted); font-size: 0.85rem; }
+
+/* Photo album */
+.album { border: 1px solid var(--line); background: var(--bg); }
+.album-viewport { position: relative; }
+.album-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+.album-track::-webkit-scrollbar { display: none; }
+.slide { flex: 0 0 100%; margin: 0; aspect-ratio: 4 / 3; scroll-snap-align: center; background: #E4E6E8; }
+.slide img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.album-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 2.5rem; height: 2.5rem; border-radius: 50%;
+  border: 1px solid var(--ink); background: var(--bg); color: var(--ink); font-size: 1.5rem; line-height: 1; cursor: pointer; }
+.album-btn:hover { border-color: var(--p-accent); color: var(--p-accent); }
+.prev { left: 0.5rem; } .next { right: 0.5rem; }
+.album-bar { display: flex; justify-content: space-between; padding: 0.5rem 0.75rem; color: var(--muted); font-size: 0.85rem; }
+
+/* One look per project */
+.project--canopy { border: 3px solid var(--p-accent); border-radius: 36px 6px 36px 6px; }
+.project--mouse { --p-accent: #8A6A0B; border: 3px solid var(--ink); border-radius: 48px; box-shadow: 10px 10px 0 var(--p-accent); }
+.project--switch { --p-accent: #2A4F9A; border: 2px dashed var(--p-accent); border-radius: 0;
+  background-color: color-mix(in srgb, var(--p-accent) 8%, var(--bg));
+  background-image: linear-gradient(color-mix(in srgb, var(--p-accent) 14%, transparent) 1px, transparent 1px),
+                    linear-gradient(90deg, color-mix(in srgb, var(--p-accent) 14%, transparent) 1px, transparent 1px);
+  background-size: 24px 24px; }
+.project--switch .project-text { padding: 1rem; background: color-mix(in srgb, var(--bg) 90%, transparent); }
+.project--switch::before, .project--switch::after { content: ""; position: absolute; width: 28px; height: 28px; border: 4px solid var(--p-accent); }
+.project--switch::before { top: -4px; left: -4px; border-right: 0; border-bottom: 0; }
+.project--switch::after { bottom: -4px; right: -4px; border-left: 0; border-top: 0; }
+:root[data-theme="dark"] .project--canopy { --p-accent: #5FD3D3; }
+:root[data-theme="dark"] .project--mouse { --p-accent: #E3C25A; }
+:root[data-theme="dark"] .project--switch { --p-accent: #8DB4F0; }
+@media (max-width: 860px) { .project-grid { grid-template-columns: 1fr; } .project { padding: 1.25rem; } .project--mouse { border-radius: 32px; } }
