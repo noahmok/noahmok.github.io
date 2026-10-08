@@ -340,6 +340,11 @@ main h2 {
    Projects
    ========================= */
 
+#about {
+  min-height: 0;
+  margin-bottom: 3rem;
+}
+
 #projects {
   min-height: 0;
 }
