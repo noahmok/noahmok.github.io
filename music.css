@@ -181,7 +181,7 @@ html:not([data-view="music"]) .toc-list--music { display: none; }
   --line: #5E4B17;
   --accent: var(--gold);
   --music: #E02424;
-  --banner-tint: rgba(8, 8, 8, 0.60);
+  --banner-tint: rgba(8, 8, 8, 0.68);
 }
 
 /* Banner: the album-cover collage, tiled across the header */
@@ -224,3 +224,21 @@ html:not([data-view="music"]) .toc-list--music { display: none; }
 
 /* Footer in the music view */
 :root[data-view="music"] .footer-links a:hover { color: var(--gold); }
+
+
+/* Header text in the music view: bright white / light gold with a dark halo,
+   so it stays readable over the busy album-cover banner */
+:root[data-view="music"] .site-bar { color: #FFFFFF; }
+
+:root[data-view="music"] .brand-name,
+:root[data-view="music"] .brand-sub,
+:root[data-view="music"] .bar-nav > a,
+:root[data-view="music"] .toc summary {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95), 0 0 10px rgba(0, 0, 0, 0.85);
+}
+
+:root[data-view="music"] .brand-name { color: #FFFFFF; }
+:root[data-view="music"] .brand-sub  { color: #F5DC8A; }
+
+:root[data-view="music"] .bar-nav > a:hover,
+:root[data-view="music"] .toc summary:hover { color: var(--gold); }
