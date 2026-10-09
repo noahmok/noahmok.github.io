@@ -6,6 +6,7 @@
   var root = document.documentElement;
   var toggle = document.getElementById("theme-toggle");
   var label = document.getElementById("theme-label");
+  if (!toggle || !label) return;
 
   function applyTheme(theme) {
     var dark = theme === "dark";
@@ -30,6 +31,7 @@
 
 (function () {
   var toc = document.getElementById("toc");
+  if (!toc) return;
 
   function close() { toc.removeAttribute("open"); }
 
@@ -95,22 +97,33 @@
 /* =========================
    View counter (counterapi.dev, V2)
    Counts once per browser session; refreshes just read the total.
+
+   Notes:
+   - cache: "no-store" stops the browser from answering from its own cache,
+     which would hide increments from the server.
+   - CounterAPI buffers writes, so the number it returns can lag a little
+     behind the true total for a minute or two.
    ========================= */
 
 (function () {
   var WORKSPACE = "ntmok-page-views";  // workspace slug from the CounterAPI dashboard
   var COUNTER = "ntmok-site-views";    // counter slug inside that workspace
+  var SESSION_KEY = "view-counted";
 
   var el = document.getElementById("view-count");
-  if (!el || !WORKSPACE) return;
+  if (!el) return;
 
   var base = "https://api.counterapi.dev/v2/" +
     encodeURIComponent(WORKSPACE) + "/" + encodeURIComponent(COUNTER);
+
+  // Has this tab already counted a visit?
   var counted = false;
+  try { counted = sessionStorage.getItem(SESSION_KEY) === "1"; } catch (e) {}
 
-  try { counted = sessionStorage.getItem("view-counted") === "1"; } catch (e) {}
+  // First visit in this session -> /up (increment). Otherwise just read the total.
+  var url = counted ? base : base + "/up";
 
-  fetch(counted ? base : base + "/up")
+  fetch(url, { cache: "no-store" })
     .then(function (res) {
       if (!res.ok) throw new Error("HTTP " + res.status);
       return res.json();
@@ -120,7 +133,13 @@
       var n = json.data.up_count - json.data.down_count;
       if (!isFinite(n)) throw new Error("Unexpected response: " + JSON.stringify(json));
       el.textContent = n.toLocaleString();
-      try { sessionStorage.setItem("view-counted", "1"); } catch (e) {}
+
+      // Only mark the session as counted after a successful increment.
+      if (!counted) {
+        try { sessionStorage.setItem(SESSION_KEY, "1"); } catch (e) {}
+      }
     })
-    .catch(function (err) { console.error("View counter:", err); }); // the dash stays on failure
+    .catch(function (err) {
+      console.error("View counter:", err); // the dash stays on failure
+    });
 })();
