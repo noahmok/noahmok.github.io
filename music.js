@@ -1,7 +1,16 @@
 /* =========================================================
    music.js  (load with defer, after script.js)
    Avatar dropdown + swapping between portfolio and music views
+   + Spotify player on the music page
    ========================================================= */
+
+/* ---------------------------------------------------------
+   EDIT ME: paste any Spotify link between the quotes.
+   Works with a song, album, playlist, artist or podcast link:
+   open Spotify -> Share -> Copy link.
+   Example: "https://open.spotify.com/track/xxxxxxxxxxxxxxxxxxxxxx"
+   --------------------------------------------------------- */
+var SPOTIFY_URL = "";
 
 (function () {
   var root = document.documentElement;
@@ -66,6 +75,35 @@
     if (e.relatedTarget && !avatar.contains(e.relatedTarget)) setOpen(false);
   });
 
+  /* ----- Spotify player ----- */
+
+  var spotifyLoaded = false;
+
+  function loadSpotify() {
+    if (spotifyLoaded) return;
+
+    var frame = document.getElementById("spotify-embed");
+    var note = document.getElementById("spotify-note");
+    if (!frame) return;
+
+    var m = String(SPOTIFY_URL || "").match(
+      /open\.spotify\.com\/(?:intl-[a-z-]+\/)?(track|album|playlist|artist|episode|show)\/([A-Za-z0-9]+)/
+    );
+
+    if (!m) {                       // no (valid) link yet: show the hint instead
+      frame.hidden = true;
+      if (note) note.hidden = false;
+      return;
+    }
+
+    var type = m[1], id = m[2];
+    frame.height = (type === "track" || type === "episode") ? 152 : 352;
+    frame.src = "https://open.spotify.com/embed/" + type + "/" + id + "?utm_source=generator&theme=0";
+    frame.hidden = false;
+    if (note) note.hidden = true;
+    spotifyLoaded = true;
+  }
+
   /* ----- View switching ----- */
 
   function currentView() {
@@ -78,6 +116,7 @@
     vinylBtn.setAttribute("aria-pressed", String(music));
     document.title = music ? MUSIC_TITLE : SITE_TITLE;
     retract(); // vinyl slides back up whichever way you switch (vinyl, name, back button, browser back)
+    if (music) loadSpotify();
 
     if (push) {
       try {
@@ -132,6 +171,7 @@
   window.addEventListener("hashchange", fromHash);
 
   // Initial state (the inline <head> script already set data-view to avoid a flash)
+  if (currentView() === "music") loadSpotify();
   vinylBtn.setAttribute("aria-pressed", String(currentView() === "music"));
   document.title = currentView() === "music" ? MUSIC_TITLE : SITE_TITLE;
 })();
