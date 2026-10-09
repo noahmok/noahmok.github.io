@@ -77,7 +77,7 @@
     root.setAttribute("data-view", music ? "music" : "site");
     vinylBtn.setAttribute("aria-pressed", String(music));
     document.title = music ? MUSIC_TITLE : SITE_TITLE;
-    setOpen(false);
+    retract(); // vinyl slides back up whichever way you switch (vinyl, name, back button, browser back)
 
     if (push) {
       try {
@@ -87,8 +87,23 @@
     window.scrollTo(0, 0);
   }
 
+  // Keeps the view in step with the URL (back/forward buttons, typed links).
+  // Section links like #reviews or #about stay in the current view.
   function fromHash() {
-    setView(location.hash === "#music" ? "music" : "site", false);
+    var hash = location.hash;
+    var want = null;
+
+    if (hash === "#music") {
+      want = "music";
+    } else if (hash === "" || hash === "#") {
+      want = "site";
+    } else {
+      var target = document.getElementById(decodeURIComponent(hash.slice(1)));
+      var musicView = document.getElementById("music-view");
+      if (target) want = musicView && musicView.contains(target) ? "music" : "site";
+    }
+
+    if (want && want !== currentView()) setView(want, false);
   }
 
   vinylBtn.addEventListener("click", function () {
