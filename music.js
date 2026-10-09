@@ -10,7 +10,7 @@
    open Spotify -> Share -> Copy link.
    Example: "https://open.spotify.com/track/xxxxxxxxxxxxxxxxxxxxxx"
    --------------------------------------------------------- */
-var SPOTIFY_URL = "";
+var SPOTIFY_URL = "https://open.spotify.com/track/0InIeZW4P6VO7dUGRM4AKH?si=7671667274cb4300";
 
 (function () {
   var root = document.documentElement;
