@@ -98,22 +98,27 @@
    ========================= */
 
 (function () {
-  // Your counterapi.dev workspace name (create a free account + workspace, then paste it here)
-  var WORKSPACE = "ntmok-page-views";
-  var COUNTER = "ntmok-site-views";
+  var WORKSPACE = "ntmok-page-views";  // workspace slug from the CounterAPI dashboard
+  var COUNTER = "ntmok-site-views";    // counter slug inside that workspace
 
   var el = document.getElementById("view-count");
-  if (!el || typeof Counter === "undefined" || WORKSPACE === "") return;
+  if (!el || !WORKSPACE) return;
 
-  var counter = new Counter({ workspace: WORKSPACE });
+  var base = "https://api.counterapi.dev/v2/" +
+    encodeURIComponent(WORKSPACE) + "/" + encodeURIComponent(COUNTER);
   var counted = false;
 
   try { counted = sessionStorage.getItem("view-counted") === "1"; } catch (e) {}
 
-  (counted ? counter.get(COUNTER) : counter.up(COUNTER))
-    .then(function (result) {
-      var n = Number(result.value);
-      if (!isFinite(n)) return;
+  fetch(counted ? base : base + "/up")
+    .then(function (res) {
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      return res.json();
+    })
+    .then(function (json) {
+      // The API replies { code, data: { up_count, down_count, ... } }
+      var n = json.data.up_count - json.data.down_count;
+      if (!isFinite(n)) throw new Error("Unexpected response: " + JSON.stringify(json));
       el.textContent = n.toLocaleString();
       try { sessionStorage.setItem("view-counted", "1"); } catch (e) {}
     })
