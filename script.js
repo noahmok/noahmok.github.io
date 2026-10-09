@@ -100,7 +100,7 @@
 (function () {
   // Your counterapi.dev workspace name (create a free account + workspace, then paste it here)
   var WORKSPACE = "ntmok-page-views";
-  var COUNTER = "page-views";
+  var COUNTER = "ntmok-site-views";
 
   var el = document.getElementById("view-count");
   if (!el || typeof Counter === "undefined" || WORKSPACE === "") return;
