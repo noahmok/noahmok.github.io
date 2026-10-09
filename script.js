@@ -103,7 +103,7 @@
   var COUNTER = "page-views";
 
   var el = document.getElementById("view-count");
-  if (!el || typeof Counter === "undefined" || WORKSPACE === "YOUR-WORKSPACE") return;
+  if (!el || typeof Counter === "undefined" || WORKSPACE === "") return;
 
   var counter = new Counter({ workspace: WORKSPACE });
   var counted = false;
