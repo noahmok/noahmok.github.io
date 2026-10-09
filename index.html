@@ -331,6 +331,25 @@
   <!-- ===== Music view (shown when the vinyl is clicked) ===== -->
   <main id="music-view">
 
+    <!-- Back button (top of the music page) -->
+    <div class="music-top">
+      <button type="button" class="back-btn" data-view-target="site">&#8592; Back to portfolio</button>
+    </div>
+
+    <!-- Spotify player: set the song with SPOTIFY_URL at the top of music.js -->
+    <section id="spotify">
+      <h2>Now playing</h2>
+      <div class="card card--spotify">
+        <iframe id="spotify-embed" title="Spotify player" hidden
+                width="100%" height="152" frameborder="0"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"></iframe>
+        <p id="spotify-note" class="spotify-note" hidden>
+          No song set yet. Paste a Spotify link into <code>SPOTIFY_URL</code> at the top of <code>music.js</code>.
+        </p>
+      </div>
+    </section>
+
     <section id="music-intro">
       <h2>Music</h2>
       <div class="card card--music-intro">
@@ -338,7 +357,6 @@
           Reviews and recommendations of the music I've been listening to.
           [Write a sentence or two about your taste here.]
         </p>
-        <p><button type="button" class="back-btn" data-view-target="site">&#8592; Back to portfolio</button></p>
       </div>
     </section>
 
