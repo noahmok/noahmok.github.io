@@ -5,7 +5,7 @@
 
 :root {
   --photo: 120px;                          /* profile picture size */
-  --vinyl-disc: calc(var(--photo) * 0.75); /* visible vinyl = 75% of the photo */
+  --vinyl-disc: calc(var(--photo) * 0.5);  /* visible vinyl = 50% of the photo */
   --disc-fill: 0.70;                       /* share of vinyl.gif's canvas the disc fills; tweak if it looks off */
   --music: #C62828;
 }
@@ -51,10 +51,8 @@ a.brand-text { color: inherit; text-decoration: none; }
   transition: opacity 0.2s ease, transform 0.25s ease, visibility 0s linear 0.25s;
 }
 
-.avatar:hover .vinyl-drop,
-.avatar.open .vinyl-drop,
-.avatar:focus-within .vinyl-drop,
-html[data-view="music"] .vinyl-drop {
+/* Opened by music.js (hover, tap or keyboard) and retracted on click-away */
+.avatar.open .vinyl-drop {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
