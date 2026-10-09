@@ -93,24 +93,29 @@
 
 
 /* =========================
-   View counter (counterapi.dev)
+   View counter (counterapi.dev, V2)
    Counts once per browser session; refreshes just read the total.
    ========================= */
 
 (function () {
+  // Your counterapi.dev workspace name (create a free account + workspace, then paste it here)
+  var WORKSPACE = "website counter";
+  var COUNTER = "page-views";
+
   var el = document.getElementById("view-count");
-  var url = "https://api.counterapi.dev/v1/eulerntm-github-io/page-views";
+  if (!el || typeof Counter === "undefined" || WORKSPACE === "YOUR-WORKSPACE") return;
+
+  var counter = new Counter({ workspace: WORKSPACE });
   var counted = false;
 
   try { counted = sessionStorage.getItem("view-counted") === "1"; } catch (e) {}
 
-  fetch(counted ? url : url + "/up")
-    .then(function (res) { return res.json(); })
-    .then(function (data) {
-      var n = Number(data.count !== undefined ? data.count : data.value);
+  (counted ? counter.get(COUNTER) : counter.up(COUNTER))
+    .then(function (result) {
+      var n = Number(result.value);
       if (!isFinite(n)) return;
       el.textContent = n.toLocaleString();
       try { sessionStorage.setItem("view-counted", "1"); } catch (e) {}
     })
-    .catch(function () {}); // on failure, the placeholder dash stays
+    .catch(function (err) { console.error("View counter:", err); }); // the dash stays on failure
 })();
