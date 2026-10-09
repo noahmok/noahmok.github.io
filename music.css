@@ -1,0 +1,169 @@
+/* =========================================================
+   music.css  (load AFTER style.css)
+   Avatar vinyl dropdown + music reviews/recommendations view
+   ========================================================= */
+
+:root {
+  --photo: 120px;                          /* profile picture size */
+  --vinyl-disc: calc(var(--photo) * 0.75); /* visible vinyl = 75% of the photo */
+  --disc-fill: 0.70;                       /* share of vinyl.gif's canvas the disc fills; tweak if it looks off */
+  --music: #C62828;
+}
+
+:root[data-theme="dark"] { --music: #FF8A80; }
+
+@media (max-width: 760px) {
+  :root { --photo: 56px; }
+}
+
+
+/* ---------- Avatar + dropdown ---------- */
+
+.avatar { position: relative; flex: none; }
+
+.avatar-btn {
+  display: block;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  cursor: pointer;
+}
+
+.avatar-btn .brand-photo {
+  width: var(--photo);
+  height: var(--photo);
+}
+
+a.brand-text { color: inherit; text-decoration: none; }
+
+.vinyl-drop {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  padding-top: 8px;               /* keeps hover alive between photo and vinyl */
+  z-index: 110;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate(-50%, -14px) scale(0.85);
+  transform-origin: top center;
+  transition: opacity 0.2s ease, transform 0.25s ease, visibility 0s linear 0.25s;
+}
+
+.avatar:hover .vinyl-drop,
+.avatar.open .vinyl-drop,
+.avatar:focus-within .vinyl-drop,
+html[data-view="music"] .vinyl-drop {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate(-50%, 0) scale(1);
+  transition-delay: 0s;
+}
+
+.vinyl-btn {
+  position: relative;
+  display: block;
+  width: var(--vinyl-disc);
+  height: var(--vinyl-disc);
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+}
+
+.vinyl-btn img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(var(--vinyl-disc) / var(--disc-fill));
+  height: calc(var(--vinyl-disc) / var(--disc-fill));
+  max-width: none;
+  transform: translate(-50%, -50%);
+}
+
+.vinyl-btn:hover { box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35), 0 0 0 3px var(--music); }
+
+
+/* ---------- View switching ---------- */
+
+html[data-view="music"] #top,
+html:not([data-view="music"]) #music-view { display: none; }
+
+html[data-view="music"] .toc-list--site,
+html:not([data-view="music"]) .toc-list--music { display: none; }
+
+
+/* ---------- Music view ---------- */
+
+.card--music-intro {
+  --c: var(--music);
+  border: 1px solid var(--line);
+  border-right: 4px solid var(--c);
+  border-radius: 6px 28px 28px 6px;
+}
+
+.card--music-intro p:first-of-type { margin-top: 0; }
+
+.card--review {
+  --c: var(--music);
+  border: 3px solid var(--c);
+  border-radius: 36px 6px 36px 6px;
+}
+
+.review-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.review-head p { margin: 0; }
+
+.rating {
+  color: var(--c);
+  font: 700 1.5rem/1 var(--font-display);
+  white-space: nowrap;
+}
+
+.rec-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 1.5rem;
+  margin: 2.5rem 0 3.5rem;
+}
+
+.rec-grid .card { margin: 0; padding: 1.25rem; }
+
+.card--rec {
+  --c: var(--music);
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--c);
+}
+
+.card--rec h3 { font-size: 1.2rem; }
+
+.back-btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  font: 500 0.95rem var(--font-body);
+  cursor: pointer;
+}
+
+.back-btn:hover { border-color: var(--music); color: var(--music); }
+
+@media (max-width: 650px) {
+  .review-head { flex-direction: column; gap: 0.25rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vinyl-drop { transition: none; }
+}
