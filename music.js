@@ -15,25 +15,55 @@
   var SITE_TITLE = "Noah Mok";
   var MUSIC_TITLE = "Noah Mok · Music";
 
-  /* ----- Dropdown (tap / keyboard; mouse users just hover) ----- */
+  /* ----- Dropdown: hover/tap/keyboard opens, click-away or vinyl click retracts ----- */
+
+  // After a click retracts the vinyl, the mouse is usually still over the avatar.
+  // Hold it closed until the mouse leaves, so it doesn't instantly reopen.
+  var heldClosed = false;
+
+  function isOpen() { return avatar.classList.contains("open"); }
 
   function setOpen(open) {
     avatar.classList.toggle("open", open);
     avatarBtn.setAttribute("aria-expanded", String(open));
   }
 
-  avatarBtn.addEventListener("click", function (e) {
-    // Real mouse click on a hover-capable device: hover already shows it.
-    if (canHover && e.detail > 0) return;
-    setOpen(!avatar.classList.contains("open"));
+  function retract() {
+    setOpen(false);
+    heldClosed = canHover && avatar.matches(":hover");
+  }
+
+  if (canHover) {
+    avatar.addEventListener("mouseenter", function () {
+      if (!heldClosed) setOpen(true);
+    });
+    avatar.addEventListener("mouseleave", function () {
+      heldClosed = false;
+      setOpen(false);
+    });
+  }
+
+  avatarBtn.addEventListener("click", function () {
+    if (isOpen()) {
+      retract();
+    } else {
+      heldClosed = false;
+      setOpen(true);
+    }
   });
 
+  // Click anywhere outside the avatar/vinyl
   document.addEventListener("click", function (e) {
     if (!avatar.contains(e.target)) setOpen(false);
   });
 
   document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape") setOpen(false);
+    if (e.key === "Escape") retract();
+  });
+
+  // Keyboard users tabbing away from the vinyl
+  avatar.addEventListener("focusout", function (e) {
+    if (e.relatedTarget && !avatar.contains(e.relatedTarget)) setOpen(false);
   });
 
   /* ----- View switching ----- */
@@ -62,6 +92,7 @@
   }
 
   vinylBtn.addEventListener("click", function () {
+    retract();
     setView(currentView() === "music" ? "site" : "music", true);
   });
 
