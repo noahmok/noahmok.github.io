@@ -198,15 +198,18 @@ main section { margin-bottom: 3rem; }
 
 main h2 { font: 700 2rem/1.2 var(--font-display); }
 
-/* Portfolio section headers: new font + elliptical background */
+/* Portfolio section headers: high-contrast block with a chamfered corner */
 #top h2 {
+  --cut: 14px;                       /* size of the angled corner */
   display: inline-block;
   margin: 0;
-  padding: 0.45rem 2.25rem 0.55rem;
-  border: 2px solid var(--accent);
-  border-radius: 50%;
-  background: color-mix(in srgb, var(--accent) 16%, var(--bg));
+  padding: 0.5rem 2.5rem 0.55rem 1.25rem;
+  border-left: 8px solid var(--accent);
+  background: var(--ink);            /* dark block in light mode, light block in dark mode */
+  color: var(--bg);
   font: 400 2rem/1.2 var(--font-heading);
+  letter-spacing: 0.01em;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%, 0 100%);
 }
 
 
@@ -498,7 +501,7 @@ main h2 { font: 700 2rem/1.2 var(--font-display); }
 
 @media (max-width: 650px) {
   .item-header { flex-direction: column; gap: 0.25rem; }
-  #top h2 { padding: 0.35rem 1.5rem 0.45rem; font-size: 1.6rem; }
+  #top h2 { --cut: 10px; padding: 0.4rem 1.75rem 0.45rem 1rem; font-size: 1.6rem; }
 }
 
 
