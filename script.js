@@ -102,19 +102,27 @@
    - cache: "no-store" stops the browser from answering from its own cache,
      which would hide increments from the server.
    - CounterAPI buffers writes, so the number it returns can lag a little
-     behind the true total for a minute or two.
+     behind the true total for a minute or two. To keep the portfolio and
+     music views showing the same number, this browser remembers the highest
+     total it has seen and never displays a lower one.
    ========================= */
 
 (function () {
   var WORKSPACE = "ntmok-page-views";  // workspace slug from the CounterAPI dashboard
   var COUNTER = "ntmok-site-views";    // counter slug inside that workspace
   var SESSION_KEY = "view-counted";
+  var LAST_KEY = "view-last";          // highest total this browser has seen
 
   var el = document.getElementById("view-count");
   if (!el) return;
 
   var base = "https://api.counterapi.dev/v2/" +
     encodeURIComponent(WORKSPACE) + "/" + encodeURIComponent(COUNTER);
+
+  // Show the last total this browser saw straight away, so every view agrees
+  var last = 0;
+  try { last = Number(localStorage.getItem(LAST_KEY)) || 0; } catch (e) {}
+  if (last) el.textContent = last.toLocaleString();
 
   // Has this tab already counted a visit?
   var counted = false;
@@ -132,7 +140,9 @@
       // The API replies { code, data: { up_count, down_count, ... } }
       var n = json.data.up_count - json.data.down_count;
       if (!isFinite(n)) throw new Error("Unexpected response: " + JSON.stringify(json));
+      n = Math.max(n, last); // a lagging response never makes the number go down
       el.textContent = n.toLocaleString();
+      try { localStorage.setItem(LAST_KEY, String(n)); } catch (e) {}
 
       // Only mark the session as counted after a successful increment.
       if (!counted) {
