@@ -23,6 +23,11 @@
   --font-display: "Newsreader", Georgia, serif;
   --font-body: "IBM Plex Sans", system-ui, sans-serif;
   --font-heading: "DM Serif Display", Georgia, serif;
+
+  /* Portfolio header blocks */
+  --head-bg: #2F5081;   /* calm steel blue */
+  --head-fg: #F4F7FA;
+  --head-bar: #7DD3C0;  /* accent stripe on the left edge */
 }
 
 :root[data-theme="dark"] {
@@ -37,6 +42,9 @@
   --canopy: #5FD3D3;
   --mouse: #E3C25A;
   --switch: #8DB4F0;
+
+  --head-bg: #245A6B;   /* muted deep teal, soft against the dark page */
+  --head-fg: #E6EDF5;
 }
 
 
@@ -198,15 +206,15 @@ main section { margin-bottom: 3rem; }
 
 main h2 { font: 700 2rem/1.2 var(--font-display); }
 
-/* Portfolio section headers: high-contrast block with a chamfered corner */
+/* Portfolio section headers: cool-colored block with a chamfered corner */
 #top h2 {
   --cut: 14px;                       /* size of the angled corner */
   display: inline-block;
   margin: 0;
   padding: 0.5rem 2.5rem 0.55rem 1.25rem;
-  border-left: 8px solid var(--accent);
-  background: var(--ink);            /* dark block in light mode, light block in dark mode */
-  color: var(--bg);
+  border-left: 8px solid var(--head-bar);
+  background: var(--head-bg);        /* colors are set per theme at the top of this file */
+  color: var(--head-fg);
   font: 400 2rem/1.2 var(--font-heading);
   letter-spacing: 0.01em;
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%, 0 100%);
