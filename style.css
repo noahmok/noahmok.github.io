@@ -22,6 +22,7 @@
 
   --font-display: "Newsreader", Georgia, serif;
   --font-body: "IBM Plex Sans", system-ui, sans-serif;
+  --font-heading: "DM Serif Display", Georgia, serif;
 }
 
 :root[data-theme="dark"] {
@@ -197,6 +198,17 @@ main section { margin-bottom: 3rem; }
 
 main h2 { font: 700 2rem/1.2 var(--font-display); }
 
+/* Portfolio section headers: new font + elliptical background */
+#top h2 {
+  display: inline-block;
+  margin: 0;
+  padding: 0.45rem 2.25rem 0.55rem;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--accent) 16%, var(--bg));
+  font: 400 2rem/1.2 var(--font-heading);
+}
+
 
 /* =========================
    Cards (shared by every section)
@@ -249,6 +261,17 @@ main h2 { font: 700 2rem/1.2 var(--font-display); }
 
 .dl-note { color: var(--muted); font-size: 0.85rem; }
 
+/* Design doc link (sits above the download button) */
+.doc-link {
+  display: block;
+  width: fit-content;
+  margin-top: 1.25rem;
+  color: var(--c);
+  font-weight: 500;
+}
+
+.doc-link + .dl { margin-top: 0.75rem; }
+
 
 /* Card variants */
 
@@ -259,6 +282,7 @@ main h2 { font: 700 2rem/1.2 var(--font-display); }
 }
 
 .card--about p { margin: 0; font-size: 1.05rem; }
+.card--about p + p { margin-top: 2rem; }
 
 .card--experience {
   border: 1px solid var(--line);
@@ -474,6 +498,7 @@ main h2 { font: 700 2rem/1.2 var(--font-display); }
 
 @media (max-width: 650px) {
   .item-header { flex-direction: column; gap: 0.25rem; }
+  #top h2 { padding: 0.35rem 1.5rem 0.45rem; font-size: 1.6rem; }
 }
 
 
