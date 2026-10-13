@@ -306,11 +306,11 @@ html:not([data-view="music"]) .toc-list--music { display: none; }
   min-width: 11rem;
   margin: 1rem 0 0.25rem;
   padding: 0.85rem 1.25rem 1rem;
+  text-align: center;          /* add this line */
   background: #1C1C1C;
   border: 2px solid var(--gold);
   border-radius: 14px;
 }
-
 /* The number and "/100" share one size and color */
 .score-num {
   display: block;
