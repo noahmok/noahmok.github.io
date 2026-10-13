@@ -281,16 +281,24 @@ html:not([data-view="music"]) .toc-list--music { display: none; }
 .card--featured h3 a { text-decoration: none; }
 .card--featured h3 a:hover { text-decoration: underline; text-underline-offset: 4px; }
 
-.rec-cover {
+.rec-cover-link {
   display: block;
   width: min(100%, 16rem);
+  margin-bottom: 1rem;
+}
+
+.rec-cover {
+  display: block;
+  width: 100%;
   height: auto;
   aspect-ratio: 1;
-  margin-bottom: 1rem;
   object-fit: cover;
   border: 2px solid var(--gold);
   border-radius: 12px;
+  transition: filter 0.15s;
 }
+
+.rec-cover-link:hover .rec-cover { filter: brightness(1.12); }
 
 /* Rating badge: big bold number over a progress bar */
 .score {
@@ -303,19 +311,16 @@ html:not([data-view="music"]) .toc-list--music { display: none; }
   border-radius: 14px;
 }
 
+/* The number and "/100" share one size and color */
 .score-num {
   display: block;
   color: #FFFFFF;
-  font: 700 3.5rem/1 var(--font-display);
-  letter-spacing: -0.02em;
+  font: 700 3rem/1 var(--font-display);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
 }
 
-.score-max {
-  margin-left: 0.25rem;
-  color: var(--muted);
-  font: 500 1rem var(--font-body);
-  letter-spacing: 0;
-}
+.score-max { font: inherit; color: inherit; }
 
 .score-bar {
   display: block;
@@ -330,6 +335,6 @@ html:not([data-view="music"]) .toc-list--music { display: none; }
   display: block;
   width: calc(var(--score) * 1%);
   height: 100%;
-  background: var(--gold);        /* the reference image uses green; swap this color if you prefer */
+  background: #5FBF5A;            /* green = a good rating */
   border-radius: inherit;
 }
