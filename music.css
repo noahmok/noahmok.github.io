@@ -315,7 +315,7 @@ html:not([data-view="music"]) .toc-list--music { display: none; }
 .score-num {
   display: block;
   color: #FFFFFF;
-  font: 700 3rem/1 var(--font-display);
+  font: 700 2rem/1 var(--font-display);
   letter-spacing: -0.01em;
   white-space: nowrap;
 }
