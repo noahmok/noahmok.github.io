@@ -520,3 +520,13 @@ main h2 { font: 700 2rem/1.2 var(--font-display); }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
+
+:root { --light: #7A3FB0; }
+:root[data-theme="dark"] { --light: #C4A1F2; }
+
+.card--light {
+  --c: var(--light);
+  border: 2px solid var(--c);
+  border-left: 10px solid var(--c);
+  border-radius: 0 40px 0 40px;
+}
