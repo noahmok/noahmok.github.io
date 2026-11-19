@@ -449,7 +449,8 @@ main {
 .about-media {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.75rem;
+  align-items: stretch;
+  gap: clamp(0.75rem, 1.5vw, 1.5rem);
   margin-top: 2.5rem;
 }
 
@@ -457,7 +458,8 @@ main {
 .about-media img {
   display: block;
   width: 100%;
-  height: 300px;
+  height: auto;
+  aspect-ratio: 4 / 3;
   border: 0;
   border-radius: 0;
   background: transparent;
@@ -699,8 +701,6 @@ main {
   .cad-viewport { height: 420px; }
   .about-media { grid-template-columns: 1fr 1fr; }
   .about-media video { grid-column: 1 / -1; }
-  .about-media video,
-  .about-media img { height: 300px; }
 }
 
 @media (max-width: 500px) {
@@ -716,8 +716,6 @@ main {
   .cad-viewport { height: 330px; }
   .about-media { grid-template-columns: 1fr; }
   .about-media video { grid-column: auto; }
-  .about-media video,
-  .about-media img { height: 260px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
