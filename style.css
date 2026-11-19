@@ -520,14 +520,21 @@ main {
 .mount-select,
 .cad-actions a {
   appearance: none;
-  border: 1px solid #8e99aa;
+  border: 1px solid #17243a;
   border-radius: 999px;
-  background: transparent;
+  background: #edf1f5;
   color: #17243a;
   font: 700 0.88rem var(--font-body);
   padding: 0.7rem 1rem;
   cursor: pointer;
   text-decoration: none;
+}
+
+:root[data-theme="dark"] .mount-select,
+:root[data-theme="dark"] .cad-actions a {
+  border-color: #cbd4e2;
+  background: #edf1f5;
+  color: #17243a;
 }
 
 .mount-select:hover,
