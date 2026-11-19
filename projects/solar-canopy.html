@@ -4,6 +4,7 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Solar Car Canopy | Noah Mok</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
   <script>(function(){var t=null;try{t=localStorage.getItem("theme")}catch(e){}document.documentElement.setAttribute("data-theme",t||"light")})();</script>
   <link rel="stylesheet" href="../style.css"><script src="../script.js" defer></script>
 </head>
@@ -12,7 +13,7 @@
   <main class="project-page"><a class="back-link" href="../index.html#projects">← Back to projects</a>
     <article class="project-article">
       <header class="project-header"><h1>Solar Car Canopy</h1><p class="institution">UWaterloo Midnight Sun</p></header>
-      <section class="project-cad" aria-label="Interactive CAD preview"><div class="project-cad-heading"><span class="cad-title">CAD Preview <a class="cad-download" href="../assets/cad/solarcarcanopyfinal.SLDPRT" download aria-label="Download Solar Car Canopy CAD"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 3h2v10l3.5-3.5 1.4 1.4-5.9 5.9-5.9-5.9 1.4-1.4L11 13V3Zm-7 14h2v3h12v-3h2v5H4v-5Z"/></svg></a></span><span>Drag to pan · scroll to zoom</span></div><div class="cad-viewport" data-cad-viewer><img src="../assets/canopy-iso.png" alt="CAD model of the Solar Car Canopy"></div></section>
+      <section class="project-cad" aria-label="Interactive CAD preview"><div class="project-cad-heading"><span class="cad-title">CAD Preview <a class="cad-download" href="../assets/cad/solarcarcanopyfinal.SLDPRT" download aria-label="Download Solar Car Canopy CAD"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 3h2v10l3.5-3.5 1.4 1.4-5.9 5.9-5.9-5.9 1.4-1.4L11 13V3Zm-7 14h2v3h12v-3h2v5H4v-5Z"/></svg></a></span><span>Drag to rotate · scroll to zoom</span></div><model-viewer class="cad-model-viewer" src="../assets/cad/solarcarcanopyfinal.glb" alt="Interactive 3D model of the Solar Car Canopy" camera-controls auto-rotate auto-rotate-delay="1000" rotation-per-second="12deg" shadow-intensity="1" exposure="1" camera-orbit="45deg 65deg 105%" min-camera-orbit="auto auto 70%" max-camera-orbit="auto auto 200%"></model-viewer></section>
       <section class="project-details">
         <div class="detail-block"><h2>The Design</h2><p>A canopy design that protects the driver and components while reducing drag within competition constraints.</p></div>
         <div class="detail-block"><h2>Design Process</h2><ol><li>Documented geometric and practical constraints of the car.</li><li>Researched prior aerobody designs and canopy shapes to optimize drag performance.</li><li>Created a surface model in SolidWorks using Boundary Surface, Knit Surface and Shell.</li></ol></div>
