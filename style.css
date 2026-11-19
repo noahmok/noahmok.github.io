@@ -173,6 +173,20 @@ main {
   transition: background 300ms ease, color 300ms ease, transform 300ms ease;
 }
 
+.about-card .project-number {
+  position: static;
+  align-self: flex-start;
+  margin-right: 1.25rem;
+  padding-top: 0.15rem;
+  color: var(--muted);
+}
+
+.about-card > div {
+  flex: 1;
+  min-width: 0;
+  padding-bottom: 0.1rem;
+}
+
 .about-card h2 {
   margin: 0;
   font: 800 clamp(1.6rem, 3vw, 2.5rem)/1 var(--font-heading);
@@ -238,6 +252,26 @@ main {
   text-decoration: none;
   transition: background 300ms ease, color 300ms ease, transform 300ms ease;
   backdrop-filter: blur(8px);
+}
+
+.project-card h3,
+.project-card em,
+.project-card .project-number {
+  position: relative;
+  z-index: 2;
+}
+
+.project-card h3,
+.project-card em {
+  padding: 0.12rem 0.35rem;
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(4px);
+  text-shadow: none;
+}
+
+:root[data-theme="dark"] .project-card h3,
+:root[data-theme="dark"] .project-card em {
+  background: rgba(27, 29, 38, 0.78);
 }
 
 .project-preview {
@@ -451,6 +485,45 @@ main {
   margin: 0;
   padding: 0.8rem 1rem;
   background: #edf1f5;
+}
+
+.project-cad model-viewer {
+  display: block;
+  width: 100%;
+  height: clamp(420px, 58vw, 680px);
+  background:
+    linear-gradient(rgba(24, 43, 72, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(24, 43, 72, 0.08) 1px, transparent 1px),
+    #edf1f5;
+  background-size: 32px 32px;
+}
+
+.mount-select,
+.cad-actions a {
+  appearance: none;
+  border: 1px solid #8e99aa;
+  border-radius: 999px;
+  background: transparent;
+  color: #17243a;
+  font: 700 0.88rem var(--font-body);
+  padding: 0.7rem 1rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.mount-select:hover,
+.mount-select.active {
+  border-color: var(--purple);
+  background: var(--purple);
+  color: #fff;
+}
+
+.viewer-loading {
+  border: 0;
+  background: rgba(237, 241, 245, 0.9);
+  color: #17243a;
+  padding: 0.5rem 0.8rem;
+  border-radius: 999px;
 }
 
 .project-actions a {

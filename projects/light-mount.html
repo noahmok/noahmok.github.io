@@ -5,6 +5,7 @@
   <title>Light Mount | Noah Mok</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
   <script>(function(){var t=null;try{t=localStorage.getItem("theme")}catch(e){}document.documentElement.setAttribute("data-theme",t||"light")})();</script>
   <link rel="stylesheet" href="../style.css"><script src="../script.js" defer></script>
 </head>
@@ -18,8 +19,26 @@
       </header>
       <section class="project-cad" aria-label="Interactive CAD preview">
         <div class="project-cad-heading"><span>CAD Preview</span><span>Drag to pan · scroll to zoom</span></div>
-        <div class="cad-viewport" data-cad-viewer><img src="../assets/lightmount-cad.jpg" alt="CAD model of the Light Mount"></div>
-        <div class="project-actions cad-actions"><a href="../assets/cad/RightLightMount.SLDPRT" download>Download Right Mount CAD</a><a href="../assets/cad/LeftLightMount.SLDPRT" download>Download Left Mount CAD</a></div>
+        <model-viewer id="light-mount-model"
+          src="../assets/cad/RightLightMount.glb"
+          alt="Interactive 3D model of the Right Light Mount"
+          camera-controls
+          auto-rotate
+          auto-rotate-delay="1000"
+          rotation-per-second="12deg"
+          shadow-intensity="1"
+          exposure="1"
+          environment-image="neutral"
+          ar
+          ar-modes="scene-viewer quick-look webxr">
+          <button class="viewer-loading" slot="progress-bar" aria-label="Loading 3D model">Loading model…</button>
+        </model-viewer>
+        <div class="project-actions cad-actions">
+          <button type="button" class="mount-select active" data-model="../assets/cad/RightLightMount.glb" data-label="Right Light Mount">Right Mount</button>
+          <button type="button" class="mount-select" data-model="../assets/cad/LeftLightMount.glb" data-label="Left Light Mount">Left Mount</button>
+          <a href="../assets/cad/RightLightMount.SLDPRT" download>Download Right Mount CAD</a>
+          <a href="../assets/cad/LeftLightMount.SLDPRT" download>Download Left Mount CAD</a>
+        </div>
       </section>
       <section class="prototype-section">
         <h2 class="project-section-heading"><span>02</span>Real-life prototype</h2>

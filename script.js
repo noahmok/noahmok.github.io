@@ -64,3 +64,20 @@
   viewport.addEventListener("pointerup", function () { dragging = false; });
   viewport.addEventListener("pointercancel", function () { dragging = false; });
 })();
+
+/* Light Mount model selector */
+(function () {
+  var viewer = document.getElementById("light-mount-model");
+  if (!viewer) return;
+
+  document.querySelectorAll(".mount-select").forEach(function (button) {
+    button.addEventListener("click", function () {
+      document.querySelectorAll(".mount-select").forEach(function (item) {
+        item.classList.remove("active");
+      });
+      button.classList.add("active");
+      viewer.src = button.dataset.model;
+      viewer.alt = "Interactive 3D model of the " + button.dataset.label;
+    });
+  });
+})();
