@@ -555,7 +555,18 @@ main {
   color: #17243a;
 }
 
-.mount-select:hover,
+.mount-select {
+  border: 2px solid #3978d4;
+  background: #3978d4;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(57, 120, 212, 0.28);
+}
+
+.mount-select:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+}
+
 .mount-select.active {
   border: 2px solid #fff;
   background: #7557b8;
@@ -563,10 +574,6 @@ main {
   box-shadow: 0 0 0 3px #7557b8, 0 4px 14px rgba(117, 87, 184, 0.45);
   transform: translateY(-2px);
   font-weight: 800;
-}
-
-.mount-select.active::before {
-  content: "✓ ";
 }
 
 .view-counter {
