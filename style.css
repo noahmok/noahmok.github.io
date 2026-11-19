@@ -289,13 +289,21 @@ main {
 }
 
 .project-card h3 {
-  min-height: 2.25em;
-  max-height: 2.25em;
+  min-height: 1.25em;
+  max-height: 1.25em;
   padding: 0 1.25rem;
   display: flex;
   align-items: flex-start;
   overflow: hidden;
   line-height: 1.12;
+  white-space: nowrap;
+  font-size: clamp(0.95rem, 1.45vw, 1.35rem);
+}
+
+.project-card em {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .project-card em {
