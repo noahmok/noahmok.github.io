@@ -241,11 +241,11 @@ main {
 
 .project-card {
   position: relative;
-  min-height: 250px;
+  min-height: 320px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 1.6rem;
+  padding: 0;
   border-right: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   background: var(--surface);
@@ -263,26 +263,41 @@ main {
 
 .project-card h3,
 .project-card em {
-  padding: 0.12rem 0.35rem;
-  background: rgba(255, 255, 255, 0.78);
-  backdrop-filter: blur(4px);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  backdrop-filter: none;
   text-shadow: none;
 }
 
 :root[data-theme="dark"] .project-card h3,
 :root[data-theme="dark"] .project-card em {
-  background: rgba(27, 29, 38, 0.78);
+  background: transparent;
 }
 
 .project-preview {
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: relative;
+  flex: 0 0 210px;
   width: 100%;
-  height: calc(100% - 95px);
+  height: 210px;
+  margin: 0;
+  padding: 1.25rem 1.25rem 0.75rem;
   object-fit: contain;
   background: transparent;
   transition: filter 300ms ease, transform 300ms ease;
+}
+
+.project-card h3 {
+  min-height: 2.25em;
+  padding: 0 1.25rem;
+  display: flex;
+  align-items: flex-start;
+}
+
+.project-card em {
+  min-height: 3rem;
+  padding: 0.35rem 1.25rem 1.25rem;
 }
 
 .project-card:hover .project-preview {
