@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About Me | Noah Mok</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <script>(function(){var t=null;try{t=localStorage.getItem("theme")}catch(e){}document.documentElement.setAttribute("data-theme",t||"light")})();</script>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" aria-pressed="false"><span aria-hidden="true">◐</span></button>
+  <main class="project-page">
+    <a class="back-link" href="index.html">← Back to portfolio</a>
+    <article class="project-article">
+      <header class="project-header">
+        <h1>About Me</h1>
+        <p class="institution">Mechanical Engineering · University of Waterloo</p>
+      </header>
+
+      <section class="project-details" style="margin-top: 3rem;">
+        <div class="detail-block" style="grid-column: span 2;">
+          <h2>About Noah</h2>
+          <p>Hi, I'm Noah! I'm a mechanical engineering undergrad at the University of Waterloo, and I'm interested in utilizing research and mechanical design to optimize systems and build projects that can positively impact people's lives.</p>
+          <p>This fall, I am working with the <strong>University of Waterloo Midnight Sun</strong> team in improving the MS 16.5 solar car exterior body, and I am also working with the <strong>UWaterloo Automotive Futures Team</strong> in researching on the 2026 Jeep Cherokee and in preparing to manufacture new technologies for off-road driving.</p>
+          <p>My recent projects include designing a <strong>solar car canopy</strong> for Midnight Sun and a <strong>rotary switch and mount</strong> for UWAFT. Check them out below!</p>
+        </div>
+        <div class="detail-block">
+          <h2>Teams</h2>
+          <ul>
+            <li>University of Waterloo Midnight Sun</li>
+            <li>UWaterloo Automotive Futures Team</li>
+            <li>Mechanical Engineering · UW 2029</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="prototype-section" style="margin-top: 3.5rem;">
+        <h2 class="project-section-heading"><span>01</span>Team photos</h2>
+        <div class="prototype-grid">
+          <img src="assets/midnight-sun.png" alt="Midnight Sun team banner project">
+          <img src="assets/baja.png" alt="Baja vehicle at sunset">
+        </div>
+      </section>
+
+      <section class="prototype-section">
+        <h2 class="project-section-heading"><span>02</span>Midnight Sun timelapse</h2>
+        <video controls playsinline preload="metadata" style="width:100%; max-height:720px; object-fit:contain; background:#edf1f5;">
+          <source src="assets/midnight-sun-timelapse.mp4" type="video/mp4">
+          <source src="assets/midnight-sun-timelapse.mov" type="video/quicktime">
+        </video>
+      </section>
+    </article>
+  </main>
+</body>
+</html>
