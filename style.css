@@ -290,9 +290,12 @@ main {
 
 .project-card h3 {
   min-height: 2.25em;
+  max-height: 2.25em;
   padding: 0 1.25rem;
   display: flex;
   align-items: flex-start;
+  overflow: hidden;
+  line-height: 1.12;
 }
 
 .project-card em {
