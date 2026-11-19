@@ -20,7 +20,7 @@
       <section class="project-cad" aria-label="Interactive CAD preview">
         <div class="project-cad-heading"><span>CAD Preview</span><span>Drag to pan · scroll to zoom</span></div>
         <model-viewer id="light-mount-model"
-          src="../assets/cad/RightLightMount.glb"
+          src="../assets/cad/RightLightMount.glb?v=2"
           alt="Interactive 3D model of the Right Light Mount"
           camera-controls
           auto-rotate
@@ -28,7 +28,9 @@
           rotation-per-second="12deg"
           shadow-intensity="1"
           exposure="1"
-          environment-image="neutral"
+          camera-orbit="45deg 65deg 105%"
+          min-camera-orbit="auto auto 70%"
+          max-camera-orbit="auto auto 200%"
           ar
           ar-modes="scene-viewer quick-look webxr">
           <button class="viewer-loading" slot="progress-bar" aria-label="Loading 3D model">Loading model…</button>
@@ -42,7 +44,7 @@
       </section>
       <section class="prototype-section">
         <h2 class="project-section-heading"><span>02</span>Real-life prototype</h2>
-        <div class="prototype-grid"><img src="../assets/lightmount-prototype.jpg" alt="Printed Light Mount prototype"><img src="../assets/lightmount-cad.jpg" alt="Light Mount installed CAD view"></div>
+        <div class="prototype-grid"><img src="../assets/lightmount-prototype.jpg" alt="Printed Light Mount prototype"><img src="../assets/lightmount-cad.png" alt="Light Mount installed CAD view"></div>
       </section>
       <section class="project-details">
         <div class="detail-block"><h2>The Design</h2><p>A 3D printed mount designed to hold the front light PCBs in the UW Midnight Sun solar car.</p></div>

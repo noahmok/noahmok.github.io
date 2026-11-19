@@ -76,7 +76,7 @@
         item.classList.remove("active");
       });
       button.classList.add("active");
-      viewer.src = button.dataset.model;
+      viewer.src = button.dataset.model + "?v=2";
       viewer.alt = "Interactive 3D model of the " + button.dataset.label;
     });
   });

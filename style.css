@@ -281,7 +281,7 @@ main {
   width: 100%;
   height: calc(100% - 95px);
   object-fit: contain;
-  background: #edf1f5;
+  background: transparent;
   transition: filter 300ms ease, transform 300ms ease;
 }
 
@@ -372,8 +372,8 @@ main {
 
 .project-cad {
   margin: 3.5rem 0;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  background: #dfe5eb;
+  border: 0;
+  background: transparent;
   overflow: hidden;
 }
 
@@ -382,7 +382,7 @@ main {
   align-items: center;
   justify-content: space-between;
   padding: 0.75rem 1rem;
-  border-bottom: 1px solid rgba(15, 27, 48, 0.16);
+  border-bottom: 0;
   color: #17243a;
   font-size: 0.78rem;
   letter-spacing: 0.11em;
@@ -442,8 +442,8 @@ main {
   width: 100%;
   height: clamp(220px, 28vw, 380px);
   object-fit: contain;
-  background: #eef1f5;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: transparent;
+  border: 0;
 }
 
 .project-details {
@@ -484,18 +484,37 @@ main {
 .cad-actions {
   margin: 0;
   padding: 0.8rem 1rem;
-  background: #edf1f5;
+  background: transparent;
 }
 
 .project-cad model-viewer {
   display: block;
   width: 100%;
   height: clamp(420px, 58vw, 680px);
-  background:
-    linear-gradient(rgba(24, 43, 72, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(24, 43, 72, 0.08) 1px, transparent 1px),
-    #edf1f5;
-  background-size: 32px 32px;
+  background: #edf1f5;
+  --poster-color: transparent;
+}
+
+:root[data-theme="dark"] .project-cad model-viewer {
+  background: #101d33;
+}
+
+:root[data-theme="dark"] .project-cad-heading {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  color: #bac5d8;
+  background: #101d33;
+}
+
+:root[data-theme="light"] .project-cad-heading {
+  border-bottom: 1px solid rgba(16, 29, 51, 0.12);
+  color: #17243a;
+  background: #edf1f5;
+}
+
+.prototype-grid img {
+  background: transparent;
+  border: 0;
+  mix-blend-mode: normal;
 }
 
 .mount-select,
