@@ -554,6 +554,15 @@ main {
 .detail-block p { margin: 1.25rem 0 0; }
 .detail-block ul, .detail-block ol { margin: 1.25rem 0 0; padding-left: 1.1rem; }
 
+.project-details:has(.about-bio) {
+  grid-template-columns: 1fr;
+}
+
+.about-bio {
+  min-height: 0;
+  grid-column: 1 / -1;
+}
+
 .project-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
 
 .cad-actions {
