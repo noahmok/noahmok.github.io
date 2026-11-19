@@ -554,9 +554,28 @@ main {
 
 .mount-select:hover,
 .mount-select.active {
-  border-color: var(--purple);
-  background: var(--purple);
+  border: 2px solid #fff;
+  background: #7557b8;
   color: #fff;
+  box-shadow: 0 0 0 3px #7557b8, 0 4px 14px rgba(117, 87, 184, 0.45);
+  transform: translateY(-2px);
+  font-weight: 800;
+}
+
+.mount-select.active::before {
+  content: "✓ ";
+}
+
+.view-counter {
+  width: 100%;
+  margin: 0;
+  padding: 1.5rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  text-align: center;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .viewer-loading {

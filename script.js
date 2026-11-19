@@ -74,10 +74,40 @@
     button.addEventListener("click", function () {
       document.querySelectorAll(".mount-select").forEach(function (item) {
         item.classList.remove("active");
+        item.setAttribute("aria-pressed", "false");
       });
       button.classList.add("active");
+      button.setAttribute("aria-pressed", "true");
       viewer.src = button.dataset.model + "?v=2";
       viewer.alt = "Interactive 3D model of the " + button.dataset.label;
     });
   });
+})();
+
+/* View counter */
+(function () {
+  var el = document.getElementById("view-count");
+  if (!el) return;
+
+  var base = "https://api.counterapi.dev/v2/ntmok-page-views/ntmok-site-views";
+  var sessionKey = "noahmok-site-counted";
+  var counted = false;
+
+  try { counted = sessionStorage.getItem(sessionKey) === "1"; } catch (e) {}
+
+  fetch(counted ? base : base + "/up", { cache: "no-store" })
+    .then(function (response) {
+      if (!response.ok) throw new Error("View counter unavailable");
+      return response.json();
+    })
+    .then(function (json) {
+      var views = json.data.up_count - json.data.down_count;
+      el.textContent = views.toLocaleString();
+      if (!counted) {
+        try { sessionStorage.setItem(sessionKey, "1"); } catch (e) {}
+      }
+    })
+    .catch(function () {
+      el.textContent = "—";
+    });
 })();
