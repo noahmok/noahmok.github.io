@@ -3,14 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Noah Mok</title>
-
+  <title>Noah Mok | Mechanical Engineering</title>
+  <meta name="description" content="Mechanical engineering projects and portfolio of Noah Mok at the University of Waterloo.">
   <link rel="icon" type="image/x-icon" href="assets/pusheen.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans:wght@400;500&family=Newsreader:opsz,wght@6..72,500;6..72,700&display=swap" rel="stylesheet">
-
-  <!-- Set the theme before first paint so the page doesn't flash -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
   <script>
     (function () {
       var saved = null;
@@ -19,484 +17,73 @@
       document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
     })();
   </script>
-
-  <!-- Show the music view straight away if the URL ends in #music (no flash) -->
-  <script>
-    if (location.hash === "#music") document.documentElement.setAttribute("data-view", "music");
-  </script>
-
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="music.css">
   <script src="script.js" defer></script>
-  <script src="music.js" defer></script>
 </head>
 <body>
+  <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" aria-pressed="false">
+    <span aria-hidden="true">◐</span>
+  </button>
 
-  <!-- ===== Header ===== -->
-  <header class="site-bar">
-    <div class="brand">
-      <div class="avatar">
-        <button type="button" class="avatar-btn" id="avatar-btn"
-                aria-expanded="false" aria-controls="vinyl-drop"
-                aria-label="Show music menu">
-          <img class="brand-photo" src="assets/profile.jpg" alt="Photo of Noah Mok" width="120" height="120">
-        </button>
+  <main>
+    <header class="hero" aria-labelledby="site-title">
+      <img class="profile-photo" src="assets/profile.jpg" alt="Noah Mok" width="220" height="220">
+      <h1 id="site-title">Noah Mok<br><span>Mechanical Engineering @ University of Waterloo</span></h1>
 
-        <div class="vinyl-drop" id="vinyl-drop">
-          <button type="button" class="vinyl-btn" id="vinyl-btn"
-                  aria-pressed="false"
-                  aria-label="Toggle music reviews and recommendations">
-            <img src="assets/vinyl.gif" alt="">
-          </button>
-        </div>
+      <nav class="social-links" aria-label="Professional links">
+        <a href="https://www.linkedin.com/in/ntmok/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+            <path d="M4.98 3.5A2.48 2.48 0 1 1 5 8.46a2.48 2.48 0 0 1-.02-4.96ZM3 9h4v12H3zm7 0h3.83v1.64h.05c.53-1 1.83-2.05 3.76-2.05 4.02 0 4.77 2.65 4.77 6.1V21h-4v-5.58c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94V21h-4z"/>
+          </svg>
+        </a>
+        <a href="mailto:noahtmok@gmail.com" aria-label="Email Noah Mok">
+          <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+            <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5Z"/>
+          </svg>
+        </a>
+        <a href="https://github.com/noahmok" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+            <path d="M12 .7A12 12 0 0 0 8.21 24c.6.11.82-.26.82-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.31 3.49 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23A11.5 11.5 0 0 1 12 6.78c1.02 0 2.04.14 3 .41 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.49 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.21.69.82.58A12 12 0 0 0 12 .7Z"/>
+          </svg>
+        </a>
+        <a class="resume-link" href="assets/Noah_Mok_CV.pdf" target="_blank" rel="noopener" aria-label="View resume">
+          <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+            <path d="M6 2h9l5 5v15H6zm2 2v16h10V9h-4V4zm7 1.5V7h1.5zM8 12h8v1.5H8zm0 3h8v1.5H8zm0 3h5v1.5H8z"/>
+          </svg>
+          <span>Resume</span>
+        </a>
+      </nav>
+    </header>
+
+    <section class="projects" aria-labelledby="projects-heading">
+      <div class="section-heading">
+        <p>01 — Projects</p>
+        <h2 id="projects-heading">Selected Work</h2>
       </div>
 
-      <a class="brand-text" href="#top">
-        <span class="brand-name">Noah Mok</span>
-        <span class="brand-sub">Mechanical Engineering, University of Waterloo</span>
-      </a>
-    </div>
-
-    <nav class="bar-nav" aria-label="Main">
-      <details class="toc" id="toc">
-        <summary>Contents</summary>
-
-        <ul class="toc-list toc-list--site">
-          <li><a href="#about">About me</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#publications">Publications</a></li>
-        </ul>
-
-        <ul class="toc-list toc-list--music">
-          <li><a href="#reviews">Reviews</a></li>
-          <li><a href="#recommendations">Recommendations</a></li>
-        </ul>
-      </details>
-
-      <a href="assets/Noah_Mok_CV.pdf" target="_blank" rel="noopener">CV</a>
-      <a href="https://www.linkedin.com/in/ntmok/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://github.com/noahmok" target="_blank" rel="noopener">GitHub</a>
-      <a href="mailto:noahtmok@gmail.com">Email</a>
-
-      <button type="button" id="theme-toggle" class="theme-toggle" aria-pressed="false">
-        <span id="theme-label">Dark mode</span>
-      </button>
-    </nav>
-  </header>
-
-
-  <!-- ===== Portfolio view ===== -->
-  <main id="top">
-
-    <!-- ===== About me ===== -->
-    <section id="about">
-      <h2>About me!</h2>
-
-      <div class="card card--about">
-        <p>
-          Hi, I'm Noah! I'm a mechanical engineering undergrad at the University of Waterloo, and I'm interested in utilizing research and mechanical design to optimize systems and build projects that can positively impact people's lives.
-        </p>
-        <p>
-          This fall, I am working with the <b>University of Waterloo Midnight Sun</b> team in improving the MS 16.5 solar car exterior body, and I am also working with the <b>UWaterloo Automotive Futures Team</b> in researching on the 2026 Jeep Cherokee and in preparing to manufacture new technologies for off-road driving.
-        </p>
-        <p>
-          My recent projects include designing a <b>solar car canopy</b> for Midnight Sun and a <b>rotary switch and mount</b> for UWAFT. Check them out below!
-        </p>
+      <div class="project-grid">
+        <a class="project-card" href="projects/light-mount.html">
+          <span class="project-number">01</span>
+          <h3>Light Mount</h3>
+          <em>UWaterloo Midnight Sun</em>
+        </a>
+        <a class="project-card" href="projects/solar-canopy.html">
+          <span class="project-number">02</span>
+          <h3>Solar Car Canopy</h3>
+          <em>UWaterloo Midnight Sun</em>
+        </a>
+        <a class="project-card" href="projects/computer-mouse.html">
+          <span class="project-number">03</span>
+          <h3>Computer Mouse</h3>
+          <em>Personal Project</em>
+        </a>
+        <a class="project-card" href="projects/rotary-switch.html">
+          <span class="project-number">04</span>
+          <h3>Rotary Selector Switch &amp; Mount</h3>
+          <em>UWAFT</em>
+        </a>
       </div>
     </section>
-
-
-    <!-- ===== Projects ===== -->
-    <section id="projects">
-      <h2>Projects</h2>
-
-      <!-- Light Mount (newest project) -->
-      <article class="card card--light">
-        <div class="project-grid">
-
-          <div class="album" data-album>
-            <div class="album-viewport">
-              <div class="album-track" tabindex="0" aria-label="Light Mount photo album">
-                    <figure class="slide" data-cap="Printed part, angled view">
-                      <img src="assets/lightmount-iso.jpg" alt="3D printed light mount sitting on a desk, seen from an angle" loading="lazy">
-                    </figure>
-                    <figure class="slide" data-cap="CAD, angled view">
-                      <img src="assets/lightmount-cad.jpg" alt="Angled view of the light mount model in SolidWorks" loading="lazy">
-                    </figure>
-                    <figure class="slide" data-cap="Printed part, front view">
-                      <img src="assets/lightmount-front.jpg" alt="Front view of the printed light mount holding a turn signal board" loading="lazy">
-                    </figure>
-              </div>
-              <button type="button" class="album-btn prev" aria-label="Previous image">&#8249;</button>
-              <button type="button" class="album-btn next" aria-label="Next image">&#8250;</button>
-            </div>
-            <div class="album-bar">
-              <span class="album-caption">Printed part, angled view</span>
-              <span class="album-count">1 / 3</span>
-            </div>
-          </div>
-
-          <div class="project-text">
-            <h3>Light Mount</h3>
-            <p class="project-meta">Oct 2026 · UW Midnight Sun</p>
-
-            <h4>The design</h4>
-            <p>A 3D printed mount designed to hold the front light PCBs in the UW Midnight Sun solar car.</p>
-
-            <h4>Design process</h4>
-            <ol>
-              <li>Utilized calipers and measuring tape to dimension the car and produce constraints for the mount design.</li>
-              <li>Modeled the mount in Solidworks, along with the aerobody and the front light PCBs, to produce an accurate CAD model that included how the mount would attach to the car and how the mount could secure the screws against vibration.</li>
-              <li>Illustrated my ideas through a design document and prototyped and communicated with senior team members to test and improve upon my design for competition.</li>
-            </ol>
-
-            <h4>Results and skills</h4>
-            <ul>
-              <li>Reduced front light jittering by 30% and secured the lights to pass regulation light angles.</li>
-              <li>Applied CAD Design, prototyping, and peer review to produce an efficient and effective solution.</li>
-              <li>Manufactured a part using Bambu Studio and utilized dimensioning and tolerancing to produce an part that solved a problem and worked in real life applications.</li>
-            </ul>
-
-            <a class="dl" href="assets/cad/lightmount.SLDPRT" download>Download part file (.SLDPRT)</a>
-            <p class="dl-note">Open in SolidWorks.</p>
-          </div>
-
-        </div>
-      </article>
-
-      <!-- Solar Car Canopy -->
-      <article class="card card--canopy">
-        <div class="project-grid">
-
-          <div class="album" data-album>
-            <div class="album-viewport">
-              <div class="album-track" tabindex="0" aria-label="Solar Car Canopy photo album">
-                    <figure class="slide" data-cap="Angled view">
-                      <img src="assets/canopy-iso.png" alt="Angled view of the canopy surface model" loading="lazy">
-                    </figure>
-                    <figure class="slide" data-cap="Side profile">
-                      <img src="assets/canopy-side.png" alt="Side profile of the canopy" loading="lazy">
-                    </figure>
-                    <figure class="slide" data-cap="Front view">
-                      <img src="assets/canopy-front.png" alt="Front view of the canopy" loading="lazy">
-                    </figure>
-              </div>
-              <button type="button" class="album-btn prev" aria-label="Previous image">&#8249;</button>
-              <button type="button" class="album-btn next" aria-label="Next image">&#8250;</button>
-            </div>
-            <div class="album-bar">
-              <span class="album-caption">Angled view</span>
-              <span class="album-count">1 / 3</span>
-            </div>
-          </div>
-
-          <div class="project-text">
-            <h3>Solar Car Canopy</h3>
-            <p class="project-meta">Oct 2026 · UW Midnight Sun</p>
-
-            <h4>The design</h4>
-            <p>A solar car canopy design to keep drivers and components safe and with the least amount of drag area allowed by design constraints.</p>
-
-            <h4>Design process</h4>
-            <ol>
-              <li>Created a design document to file geometric and practical constraints of the car.</li>
-              <li>Researched previous aerobody designs and data analysis on the shape of the "bubble canopy" in <i>The Winning Solar Car</i> (Carroll, 2003) to optimize my own design and create the best possible canopy for racing performance.</li>
-              <li>Modelled the canopy with surface modeling in SolidWorks, using tools like Boundary Surface, Knit Surface, and Shell to transpose my ideas into reality.</li>
-            </ol>
-
-            <h4>Results and skills</h4>
-            <ul>
-              <li>Reduced canopy drag area by more than 50 percent.</li>
-              <li>Applied Research and Design process to not only create a design, but an effective and practical solution.</li>
-              <li>Utilized Surface Modeling in Solidworks to create complex curved objects and to create CAD models for aerodynamic simulations.</li>
-            </ul>
-
-            <a class="dl" href="assets/cad/solarcarcanopyfinal.SLDPRT" download>Download part file (.SLDPRT)</a>
-            <p class="dl-note">Open in SolidWorks.</p>
-          </div>
-
-        </div>
-      </article>
-
-      <!-- Computer Mouse -->
-      <article class="card card--mouse">
-        <div class="project-grid">
-
-          <div class="album" data-album>
-            <div class="album-viewport">
-              <div class="album-track" tabindex="0" aria-label="Computer Mouse photo album">
-                    <figure class="slide" data-cap="Angled view">
-                      <img src="assets/mouse-iso.png" alt="Angled view of the mouse model" loading="lazy">
-                    </figure>
-                    <figure class="slide" data-cap="Top view">
-                      <img src="assets/mouse-top.png" alt="Top view of the mouse model" loading="lazy">
-                    </figure>
-                    <figure class="slide" data-cap="Side view">
-                      <img src="assets/mouse-side.png" alt="Side view of the mouse model" loading="lazy">
-                    </figure>
-              </div>
-              <button type="button" class="album-btn prev" aria-label="Previous image">&#8249;</button>
-              <button type="button" class="album-btn next" aria-label="Next image">&#8250;</button>
-            </div>
-            <div class="album-bar">
-              <span class="album-caption">Angled view</span>
-              <span class="album-count">1 / 3</span>
-            </div>
-          </div>
-
-          <div class="project-text">
-            <h3>Computer Mouse</h3>
-            <p class="project-meta">Oct 2026 · Personal project</p>
-
-            <h4>The design</h4>
-            <p>A computer mouse modelled in SolidWorks with a sculpted shell made of surfaces, a scroll wheel and two side buttons.</p>
-
-            <h4>Design process</h4>
-            <ol>
-              <li>Researched gaming mouse designs and measured my own mouse to determine general constraints of a computer mouse, and features that consumers prefer to have for accessibility or performance purposes.</li>
-              <li>Modeled the mouse body using surface modeling in Solidworks to practice surface modeling tools and to design complex curves and contours found on real mouse designs.</li>
-              <li>Added additional features such as the scroll wheel, side mouse buttons, and separated the right and left mouse buttons according to how I found these features presented on other mouse designs.</li>
-            </ol>
-
-            <h4>Results and skills</h4>
-            <ul>
-              <li>Created a consumer friendly gaming mouse with an aerodynamic shape for smoother performance, reduced weight through shelling the design, and with features to support gaming and casual computer usage.</li>
-              <li>Applied Research and Design process to find common criteria of mouse designs and apply my own constraints to develop my unique vision of a mouse.</li>
-              <li>Utilized both surface and solid modeling to create a mouse shape with complex curves and to integrate other solid objects like a scroll wheel and buttons onto the design.</li>
-            </ul>
-
-            <a class="dl" href="assets/cad/mouse.SLDPRT" download>Download part file (.SLDPRT)</a>
-            <p class="dl-note">Open in SolidWorks.</p>
-          </div>
-
-        </div>
-      </article>
-
-      <!-- Rotary Selector Switch and Mount -->
-      <article class="card card--switch">
-        <div class="project-grid">
-
-          <div class="album" data-album>
-            <div class="album-viewport">
-              <div class="album-track" tabindex="0" aria-label="Rotary Selector Switch and Mount photo album">
-                    <figure class="slide" data-cap="Angled view">
-                      <img src="assets/switch-iso.png" alt="Angled view of the switch, housing and mounting plate" loading="lazy">
-                    </figure>
-                    <figure class="slide" data-cap="Top view">
-                      <img src="assets/switch-top.png" alt="Top view of the switch knob and plate" loading="lazy">
-                    </figure>
-              </div>
-              <button type="button" class="album-btn prev" aria-label="Previous image">&#8249;</button>
-              <button type="button" class="album-btn next" aria-label="Next image">&#8250;</button>
-            </div>
-            <div class="album-bar">
-              <span class="album-caption">Angled view</span>
-              <span class="album-count">1 / 2</span>
-            </div>
-          </div>
-
-          <div class="project-text">
-            <h3>Rotary Selector Switch and Mount</h3>
-            <p class="project-meta">Sep 2026 · UW Automobile Futures Team</p>
-
-            <h4>The design</h4>
-            <p>A rotary selector switch and its mount: a knob and bezel, a housing, and a mounting plate fastened with screws, designed for integration into a production vehicle.</p>
-
-            <h4>Design process</h4>
-            <ol>
-              <li>Created a design document to organize the design objective, constraints, materials list, and manufacturing process for the switch and mount.</li>
-              <li>Analyzed mount designs online and previous mount implementation in former UWAFT cars to construct a design which met all of the required constraints and solved issues that consumers will likely face during vehicle operation.</li>
-              <li>Designed the switch and mount in Siemens NX using surface modeling tools to bring my ideas to life.</li>
-            </ol>
-
-            <h4>Results and skills</h4>
-            <ul>
-              <li>Reduced cost by 20 percent while improving safety, accessibility and durability of the mount and switch.</li>
-              <li>Applied Research and Design process to make a design that didn't just work, but was fully optimized to maximize durability and guarantee its functionality.</li>
-              <li>Designed using Siemens NX solid modeling tools and dimensioning and tolerancing to create a practical part in 3D CAD.</li>
-            </ul>
-
-            <a class="doc-link" href="assets/RotarySwitchDesignDoc.pdf" target="_blank" rel="noopener">Link to Rotary Switch And Mount Design Doc</a>
-            <a class="dl" href="assets/cad/switchmountfinal.prt" download>Download part file (.prt)</a>
-            <p class="dl-note">Opens in Siemens NX.</p>
-          </div>
-
-        </div>
-      </article>
-    </section>
-
-
-    <!-- ===== Experience ===== -->
-    <section id="experience">
-      <h2>Experience</h2>
-
-      <article class="card card--experience">
-        <div class="item-header">
-          <div>
-            <h3>Student Page</h3>
-            <p class="item-sub">Edmonton Public Library · Edmonton, AB</p>
-          </div>
-          <p class="item-meta">Sep 2023 – Oct 2025</p>
-        </div>
-
-        <p>
-          Worked 10–12 hours a week organizing, shelving, and sorting book
-          returns and arrivals while assisting customers with software such as
-          Word, PowerPoint, and Outlook. Helped individual patrons save up to
-          30 minutes when searching for books and handling technical services.
-        </p>
-
-        <p>
-          Mentored incoming student pages in daily operations and helped
-          maintain the strength of the student page team, increasing team
-          efficiency by 50 percent.
-        </p>
-      </article>
-    </section>
-
-
-    <!-- ===== Publications ===== -->
-    <section id="publications">
-      <h2>Publications</h2>
-
-      <article class="card card--publication">
-        <h3>Isoperimetric sets of English words</h3>
-        <p class="item-sub">Parabola · Volume 59, Issue 2 · 2023</p>
-
-        <p>
-          Co-authored a mathematical investigation of isoperimetric sets in a
-          space of the 3000 most common English words. The project used
-          distance, boundaries, and perimeter to study word sets with minimum
-          and maximum perimeter, with computation and Python used to generate
-          and independently verify the results.
-        </p>
-
-        <p>
-          As part of the research, I led a team of 16 in investigating the
-          mathematical structure of these word sets and how the results could
-          help explain processes such as autocorrect.
-        </p>
-
-        <a class="dl" href="https://www.parabola.unsw.edu.au/sites/default/files/2024-02/vol59_no2_1.pdf" target="_blank" rel="noopener">Read publication</a>
-      </article>
-    </section>
-
   </main>
-
-
-  <!-- ===== Music view (shown when the vinyl is clicked) ===== -->
-  <main id="music-view">
-
-    <!-- Back button (top of the music page) -->
-    <div class="music-top">
-      <button type="button" class="back-btn" data-view-target="site">&#8592; Back to portfolio</button>
-    </div>
-
-    <!-- Spotify player: set the song with SPOTIFY_URL at the top of music.js -->
-    <section id="spotify">
-      <h2>Now playing</h2>
-      <div class="card card--spotify">
-        <iframe id="spotify-embed" title="Spotify player" hidden
-                width="100%" height="152" frameborder="0"
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                loading="lazy"></iframe>
-        <p id="spotify-note" class="spotify-note" hidden>
-          No song set yet. Paste a Spotify link into <code>SPOTIFY_URL</code> at the top of <code>music.js</code>.
-        </p>
-      </div>
-    </section>
-
-    <section id="music-intro">
-      <h2>Music</h2>
-      <div class="card card--music-intro">
-        <p>
-          WIP
-        </p>
-      </div>
-    </section>
-
-    <section id="reviews">
-      <h2>Reviews</h2>
-
-      <article class="card card--review">
-        <div class="review-head">
-          <div>
-            <h3>WIP</h3>
-            <p class="item-sub">WIP</p>
-          </div>
-          <p class="rating">WIP</p>
-        </div>
-        <p>WIP</p>
-      </article>
-    </section>
-
-    <section id="recommendations">
-      <h2>Recommendations</h2>
-
-      <div class="rec-grid">
-        <!-- Featured recommendation -->
-        <article class="card card--rec card--featured">
-          <a class="rec-cover-link" href="https://open.spotify.com/track/7AmoRK7sgFkPvuiiIzcz9Z" target="_blank" rel="noopener" aria-label="Listen to Narcissistic on Spotify">
-            <img class="rec-cover" src="assets/narcissistic-cover.png"
-                 alt="Cover art for Narcissistic by The Vanished People" width="225" height="225" loading="lazy">
-          </a>
-
-          <h3><a href="https://open.spotify.com/track/7AmoRK7sgFkPvuiiIzcz9Z" target="_blank" rel="noopener">Narcissistic</a></h3>
-          <p class="item-sub">The Vanished People</p>
-
-          <!-- Rating: change the number and --score (0 to 100) together -->
-          <div class="score" role="img" aria-label="Rating: 90 out of 100" style="--score: 90;">
-            <span class="score-num">90<span class="score-max">/100</span></span>
-            <span class="score-bar"><span class="score-fill"></span></span>
-          </div>
-
-          <p>
-            The Vanished People are one of my favorite finds in 2026. Their j-pop and power-pop style meshes so well with jazzy beats and Piero's extravagant guitar riffs. Last September, they dropped this banger, which has found its way into my constant Spotify rotation. From the start, Piero and Jacob hit you with a riff reminiscent of the start of "Holy, Holy" by Geordie Greep (another amazing song, btw), and the free flowing cover art matches Piero's guitar work in this song so well. This song is a great return to form to a band who built their image on upbeat pop that makes you want to air guitar and drum along. With this single, I can't wait for their next full project!
-          </p>
-        </article>
-
-      </div>
-    </section>
-
-  </main>
-
-
-  <!-- ===== Footer ===== -->
-  <footer class="site-footer">
-
-    <div class="footer-links">
-      <a href="mailto:noahtmok@gmail.com" aria-label="Email">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <rect x="2" y="4" width="20" height="16" rx="3"/>
-          <path class="cut-stroke" d="M4.5 8l7.5 5.5L19.5 8"/>
-        </svg>
-      </a>
-
-      <a href="https://github.com/noahmok" target="_blank" rel="noopener" aria-label="GitHub">
-        <svg viewBox="0 0 16 16" aria-hidden="true">
-          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
-        </svg>
-      </a>
-
-      <a href="https://www.linkedin.com/in/ntmok/" target="_blank" rel="noopener" aria-label="LinkedIn">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <rect width="24" height="24" rx="3"/>
-          <circle class="cut" cx="6.6" cy="6.7" r="1.9"/>
-          <rect class="cut" x="4.9" y="9.6" width="3.4" height="9.5"/>
-          <path class="cut" d="M10.2 9.6h3.2v1.4c.5-.9 1.6-1.6 3.2-1.6 2.7 0 3.4 1.8 3.4 4.1v5.6h-3.3v-4.9c0-1.2-.3-2.1-1.5-2.1s-1.7.9-1.7 2.2v4.8h-3.3z"/>
-        </svg>
-      </a>
-    </div>
-
-    <hr>
-
-    <p class="footer-legal">
-      © Copyright 2026 Noah Mok.
-      <span class="views"><span id="view-count">–</span> views</span>
-    </p>
-
-  </footer>
-
 </body>
 </html>
