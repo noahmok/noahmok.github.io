@@ -80,6 +80,11 @@
       button.setAttribute("aria-pressed", "true");
       viewer.src = button.dataset.model + "?v=2";
       viewer.alt = "Interactive 3D model of the " + button.dataset.label;
+      var download = document.getElementById("cad-download");
+      if (download) {
+        download.href = button.dataset.model.replace(".glb", ".SLDPRT");
+        download.setAttribute("aria-label", "Download " + button.dataset.label + " CAD");
+      }
     });
   });
 })();

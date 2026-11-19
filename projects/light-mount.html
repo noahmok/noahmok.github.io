@@ -18,7 +18,10 @@
         <h1>Light Mount</h1><p class="institution">UWaterloo Midnight Sun</p>
       </header>
       <section class="project-cad" aria-label="Interactive CAD preview">
-        <div class="project-cad-heading"><span>CAD Preview</span><span>Drag to pan · scroll to zoom</span></div>
+        <div class="project-cad-heading">
+          <span class="cad-title">CAD Preview <a id="cad-download" class="cad-download" href="../assets/cad/RightLightMount.SLDPRT" download aria-label="Download Right Light Mount CAD"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 3h2v10l3.5-3.5 1.4 1.4-5.9 5.9-5.9-5.9 1.4-1.4L11 13V3Zm-7 14h2v3h12v-3h2v5H4v-5Z"/></svg></a></span>
+          <span>Drag to pan · scroll to zoom</span>
+        </div>
         <model-viewer id="light-mount-model"
           src="../assets/cad/RightLightMount.glb?v=2"
           alt="Interactive 3D model of the Right Light Mount"
@@ -37,8 +40,6 @@
         <div class="project-actions cad-actions">
           <button type="button" class="mount-select active" data-model="../assets/cad/RightLightMount.glb" data-label="Right Light Mount" aria-pressed="true">Right Mount</button>
           <button type="button" class="mount-select" data-model="../assets/cad/LeftLightMount.glb" data-label="Left Light Mount" aria-pressed="false">Left Mount</button>
-          <a href="../assets/cad/RightLightMount.SLDPRT" download>Download Right Mount CAD</a>
-          <a href="../assets/cad/LeftLightMount.SLDPRT" download>Download Left Mount CAD</a>
         </div>
       </section>
       <section class="prototype-section">
