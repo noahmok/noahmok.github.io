@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Toy Robot | Noah Mok</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+  <script>(function(){var t=null;try{t=localStorage.getItem("theme")}catch(e){}document.documentElement.setAttribute("data-theme",t||"light")})();</script>
+  <link rel="stylesheet" href="../style.css"><script src="../script.js" defer></script>
+</head>
+<body>
+  <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" aria-pressed="false"><span aria-hidden="true">◐</span></button>
+  <main class="project-page"><a class="back-link" href="../index.html#projects">← Back to projects</a>
+    <article class="project-article">
+      <header class="project-header"><h1>Toy Robot</h1><p class="institution">Personal Project</p></header>
+      <section class="project-cad" aria-label="Interactive CAD preview"><div class="project-cad-heading"><span class="cad-title">CAD Preview</span><span>Drag to rotate · scroll to zoom</span></div><model-viewer class="cad-model-viewer" src="../assets/cad/toy-robot.glb" alt="Interactive 3D model of the toy robot enclosure" camera-controls auto-rotate auto-rotate-delay="1000" rotation-per-second="12deg" shadow-intensity="1" exposure="1" camera-orbit="45deg 65deg 105%" min-camera-orbit="auto auto 70%" max-camera-orbit="auto auto 200%"></model-viewer></section>
+      <section class="prototype-section" aria-labelledby="robot-prototype-heading">
+        <h2 class="project-section-heading" id="robot-prototype-heading">Prototype</h2>
+        <div class="prototype-grid">
+          <figure><img src="../assets/toy-robot-prototype.png" alt="Completed 3D-printed toy robot with OLED display face"><figcaption>Assembled robot</figcaption></figure>
+          <figure><img src="../assets/toy-robot-breadboard.png" alt="Breadboard prototype with ESP32, OLED display and wiring"><figcaption>Electronics prototype</figcaption></figure>
+          <figure><img src="../assets/toy-robot-electronics.png" alt="Wiring and components inside the printed robot enclosure"><figcaption>Enclosure and wiring</figcaption></figure>
+        </div>
+      </section>
+      <section class="project-details">
+        <div class="detail-block"><h2>The Design</h2><p>A compact, 3D-printed robot with an ESP32, an OLED display face and a button to turn it on and off.</p></div>
+        <div class="detail-block"><h2>Design Process</h2><ol><li>Modelled the body and lid in SolidWorks around the electrical components.</li><li>Applied ±0.25 mm tolerances so the components fit securely inside the enclosure.</li><li>Wired and soldered the OLED and power button, then assembled the printed prototype.</li></ol></div>
+        <div class="detail-block"><h2>Results and Skills</h2><p>Designed, wired and coded a working personal robot prototype.</p><ul><li>SolidWorks and Arduino IDE</li><li>3D printing and prototyping</li><li>Soldering and electronics integration</li></ul></div>
+      </section>
+    </article>
+  </main>
+</body>
+</html>

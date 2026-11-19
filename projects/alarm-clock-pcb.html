@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Alarm Clock PCB | Noah Mok</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+  <script>(function(){var t=null;try{t=localStorage.getItem("theme")}catch(e){}document.documentElement.setAttribute("data-theme",t||"light")})();</script>
+  <link rel="stylesheet" href="../style.css"><script src="../script.js" defer></script>
+</head>
+<body>
+  <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" aria-pressed="false"><span aria-hidden="true">◐</span></button>
+  <main class="project-page"><a class="back-link" href="../index.html#projects">← Back to projects</a>
+    <article class="project-article">
+      <header class="project-header"><h1>Alarm Clock PCB</h1><p class="institution">Personal Project</p></header>
+      <section class="project-cad" aria-label="Interactive CAD preview"><div class="project-cad-heading"><span class="cad-title">CAD Preview</span><span>Drag to rotate · scroll to zoom</span></div><model-viewer class="cad-model-viewer" src="../assets/cad/alarm-clock-pcb.glb" alt="Interactive 3D model of the alarm clock PCB and display" camera-controls auto-rotate auto-rotate-delay="1000" rotation-per-second="12deg" shadow-intensity="1" exposure="1" camera-orbit="45deg 65deg 105%" min-camera-orbit="auto auto 70%" max-camera-orbit="auto auto 200%"></model-viewer></section>
+      <section class="prototype-section" aria-labelledby="clock-design-heading">
+        <h2 class="project-section-heading" id="clock-design-heading">Schematic and PCB</h2>
+        <div class="prototype-grid">
+          <figure><img src="../assets/alarm-clock-schematic.png" alt="KiCad schematic for the ESP32 alarm clock with display and buzzer"><figcaption>Alarm clock schematic</figcaption></figure>
+          <figure><img src="../assets/alarm-clock-pcb-layout.png" alt="KiCad PCB footprint layout for the alarm clock"><figcaption>PCB footprint and layout</figcaption></figure>
+        </div>
+      </section>
+      <section class="project-details">
+        <div class="detail-block"><h2>The Design</h2><p>An ESP32 alarm clock that displays the time on a four-digit, seven-segment display and sounds an alarm through a passive buzzer.</p></div>
+        <div class="detail-block"><h2>Design Process</h2><ol><li>Drew the circuit schematic in KiCad.</li><li>Selected and organized component footprints on a compact PCB.</li><li>Programmed the ESP32 using the Arduino IDE.</li></ol></div>
+        <div class="detail-block"><h2>Results and Skills</h2><p>Reduced the size of the original prototype by 33% by arranging the components on a PCB.</p><ul><li>KiCad schematic and PCB design</li><li>Component footprint selection</li><li>Arduino IDE and microcontroller integration</li></ul></div>
+      </section>
+    </article>
+  </main>
+</body>
+</html>
